@@ -111,7 +111,6 @@ dessa variável. Incrível!!!
 Você deve entregar esta atividade via **SIGAA**, apenas o link no
 formato https://seu-user.github.io/utf-cg-lista-webgl/.
 
-Valor: 4 pontos
 
 
 ## Notas de Rodapé
