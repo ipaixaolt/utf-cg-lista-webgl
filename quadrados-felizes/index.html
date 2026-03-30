@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Quadrados Felizes</title>
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #f7b9d8;
+        }
+
+        canvas {
+            border: 1px solid #ccc;
+            background: rgb(255, 229, 254);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="resizable-container">
+        <canvas id="happySquaresCanvas" width="600" height="600"></canvas>
+    </div>
+
+    <script type="shader/vertex">
+        #version 300 es
+
+        in vec2 position;
+
+        uniform mat4 projection;
+        uniform vec2 offset;
+
+        void main() {
+            vec2 finalPosition = position + offset;
+            gl_Position = projection * vec4(finalPosition, 0.0, 1.0);
+        }
+    </script>
+
+    <script type="shader/fragment">
+        #version 300 es
+
+        precision highp float;
+
+        uniform vec3 color;
+        out vec4 outColor;
+
+        void main() {
+            outColor = vec4(color, 1.0);
+        }
+    </script>
+
+    <script type="module">
+        import { setupWebGL, initialize, render } from './script.js';
+
+        const gl = setupWebGL();
+        initialize(gl);
+        render(gl);
+    </script>
+</body>
+
+</html>
